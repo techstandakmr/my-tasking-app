@@ -1,5 +1,6 @@
 <?php
 
+use App\Http\Controllers\Api\AppController;
 use App\Http\Controllers\Api\AuthController;
 use App\Http\Controllers\Api\TaskController;
 use App\Http\Controllers\Api\UserController;
@@ -10,7 +11,7 @@ Route::post("/auth/login", [AuthController::class, 'login']);
 Route::post('/user/send-otp', [UserController::class, 'sendOTP']);
 Route::post('/user/verify-otp', [UserController::class, 'verifyOTP']);
 Route::post('/user/change-password-by-otp', [UserController::class, 'updatePasswordByOTP']);
-
+Route::get('/app-version', [AppController::class, 'version']);
 Route::middleware('auth:sanctum')->group(function () {
     Route::post('/auth/logout', [AuthController::class, 'logout']);
     Route::get('/user', [UserController::class, 'profile']);
