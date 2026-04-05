@@ -8,7 +8,7 @@ use App\Http\Requests\UserRequest;
 use App\Models\User;
 use Illuminate\Support\Facades\Hash;
 use Illuminate\Support\Facades\Mail;
-// use Illuminate\Support\Facades\Storage;
+use Illuminate\Support\Facades\Http;
 use Cloudinary\Cloudinary;
 use Cloudinary\Configuration\Configuration;
 
@@ -158,10 +158,22 @@ class UserController extends Controller
         ";
 
         // Send email
-        Mail::html($html, function ($message) use ($user) {
-            $message->to($user->email)
-                ->subject('Password Reset OTP');
-        });
+        $response = Http::withHeaders([
+            'api-key' => env('BREVO_API_KEY'),
+            'Content-Type' => 'application/json',
+        ])->post('https://api.brevo.com/v3/smtp/email', [
+            'sender' => [
+                'name' => 'My Tasking',
+                'email' => env('MAIL_FROM_ADDRESS'),
+            ],
+            'to' => [
+                [
+                    'email' => $user->email,
+                ]
+            ],
+            'subject' => 'Password Reset OTP',
+            'htmlContent' => $html,
+        ]);
 
         return response()->json([
             'message' => 'OTP sent to your email'

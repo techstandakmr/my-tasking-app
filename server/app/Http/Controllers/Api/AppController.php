@@ -10,7 +10,7 @@ class AppController extends Controller
     {
         return response()->json([
             "latestVersion" => "1.0.0",
-            "apkUrl" => "https://github.com/yourname/yourrepo/releases/download/v1.0.1/my-tasking.apk",
+            "apkUrl" => "https://github.com/techstandakmr/my-tasking-app/releases/download/v1.0.0/my-tasking.apk",
             "forceUpdate" => false
         ]);
     }
