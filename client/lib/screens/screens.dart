@@ -1,6 +1,5 @@
 export './offline_screen.dart';
 // auth
-export './auth/check_auth_screen.dart';
 export './auth/login_screen.dart';
 export './auth/signup_screen.dart';
 
