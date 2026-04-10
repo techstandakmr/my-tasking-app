@@ -26,10 +26,9 @@ class UserService {
       return {"success": false, "message": "No internet connection"};
     }
 
-    final uri = Uri.parse("${ApiService.baseUrl}/user");
+    final uri = Uri.parse("${ApiService.baseUrl}/user-avatar");
 
     final request = http.MultipartRequest("POST", uri);
-    request.fields['_method'] = 'PATCH';
 
     // headers (without content-type)
     final headers = await ApiService.headers();
