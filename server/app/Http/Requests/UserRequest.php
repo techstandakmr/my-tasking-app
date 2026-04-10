@@ -29,7 +29,7 @@ class UserRequest extends FormRequest
             "title" => "nullable|string",
             "description" => "nullable|string",
             "current_password" => "sometimes|required_with:new_password|string",
-            "new_password" => "sometimes|string|min:6|different:current_password",
+            "new_password" => "sometimes|string|min:8|different:current_password",
         ];
     }
 }
