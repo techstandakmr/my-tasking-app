@@ -88,7 +88,7 @@ class _ForgotPasswordScreenState extends State<ForgotPasswordScreen> {
       step = 3;
       isLoading = false;
     });
-    AppToast.showInfo(context, result['message']);
+    AppToast.showSuccess(context, result['message']);
   }
 
   void updatePassword() async {
