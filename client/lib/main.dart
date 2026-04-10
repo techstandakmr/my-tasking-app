@@ -21,8 +21,6 @@ class MyApp extends StatelessWidget {
         "/signup": (context) => const SignupScreen(),
         "/forgot-password": (context) => const ForgotPasswordScreen(),
 
-        "/": (context) => HomeScreen(),
-
         "/add-task": (context) => const AddTaskScreen(),
         "/edit-task": (context) => const EditTaskScreen(),
         "/my-tasks": (context) => const MyTasksScreen(),
