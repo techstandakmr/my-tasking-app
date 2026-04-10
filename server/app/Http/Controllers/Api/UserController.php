@@ -83,7 +83,7 @@ class UserController extends Controller
 
         $request->validated([
             "current_password" => "required",
-            'new_password' => 'required|min:6|different:current_password'
+            'new_password' => 'required|min:8|different:current_password'
         ]);
 
         // Check current password
@@ -221,13 +221,13 @@ class UserController extends Controller
     {
         $request->validate([
             'email' => 'required|email',
-            'new_password' => 'required|min:6'
+            'new_password' => 'required|min:8'
         ]);
 
         $user = User::where('email', $request->email)->first();
 
         // Check OTP verified
-        if (!$user->otp != "verified") {
+        if ($user->otp != "verified") {
             return response()->json([
                 'message' => 'OTP not verified'
             ], 403);
