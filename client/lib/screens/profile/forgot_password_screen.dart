@@ -206,19 +206,23 @@ class _ForgotPasswordScreenState extends State<ForgotPasswordScreen> {
 
                         const SizedBox(height: 20),
 
-                        ElevatedButton(
-                          onPressed: (isOtpValid && !isLoading)
-                              ? verifyOtp
-                              : null,
-                          style: ElevatedButton.styleFrom(
-                            shape: RoundedRectangleBorder(
-                              borderRadius: BorderRadius.circular(6),
+                        SizedBox(
+                          width: double.infinity,
+                          height: 60,
+                          child: ElevatedButton(
+                            onPressed: (isOtpValid && !isLoading)
+                                ? verifyOtp
+                                : null,
+                            style: ElevatedButton.styleFrom(
+                              shape: RoundedRectangleBorder(
+                                borderRadius: BorderRadius.circular(6),
+                              ),
+                              elevation: 0,
                             ),
-                            elevation: 0,
+                            child: isLoading
+                                ? const CircularProgressIndicator()
+                                : const Text("Verify OTP"),
                           ),
-                          child: isLoading
-                              ? const CircularProgressIndicator()
-                              : const Text("Verify OTP"),
                         ),
                       ],
                       if (step == 3) ...[
@@ -235,19 +239,23 @@ class _ForgotPasswordScreenState extends State<ForgotPasswordScreen> {
 
                         const SizedBox(height: 20),
 
-                        ElevatedButton(
-                          onPressed: (isPasswordValid && !isLoading)
-                              ? updatePassword
-                              : null,
-                          style: ElevatedButton.styleFrom(
-                            shape: RoundedRectangleBorder(
-                              borderRadius: BorderRadius.circular(6),
+                        SizedBox(
+                          width: double.infinity,
+                          height: 60,
+                          child: ElevatedButton(
+                            onPressed: (isPasswordValid && !isLoading)
+                                ? updatePassword
+                                : null,
+                            style: ElevatedButton.styleFrom(
+                              shape: RoundedRectangleBorder(
+                                borderRadius: BorderRadius.circular(6),
+                              ),
+                              elevation: 0,
                             ),
-                            elevation: 0,
+                            child: isLoading
+                                ? const CircularProgressIndicator()
+                                : const Text("Update Password"),
                           ),
-                          child: isLoading
-                              ? const CircularProgressIndicator()
-                              : const Text("Update Password"),
                         ),
                       ],
                     ],
