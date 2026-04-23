@@ -39,7 +39,10 @@ class TaskService {
       int difference = dueDate.difference(todayDate).inDays;
 
       //  Get formatted data (reuse your logic)
-      final dueInfo = formatDueDateWithColor(task["due_date"]);
+      final dueInfo = TaskService.formatDueDateWithColor(
+        task["due_date"],
+        task["stage"],
+      );
 
       //  Overdue
       if (difference < 0) {
@@ -74,7 +77,10 @@ class TaskService {
     return importantTasks;
   }
 
-  static Map<String, dynamic> formatDueDateWithColor(String dueDateString) {
+  static Map<String, dynamic> formatDueDateWithColor(
+    String dueDateString,
+    String? stage,
+  ) {
     DateTime now = DateTime.now();
     DateTime todayDate = DateTime(now.year, now.month, now.day);
 
@@ -82,7 +88,12 @@ class TaskService {
     DateTime dueDate = DateTime(dueRaw.year, dueRaw.month, dueRaw.day);
 
     int difference = dueDate.difference(todayDate).inDays;
-
+    if (stage == "completed") {
+      return {
+        "text": DateFormat("dd MMM yyyy").format(dueDate),
+        "color": Colors.green,
+      };
+    }
     if (difference < 0) {
       return {
         "text": "Overdue by ${difference.abs()} day(s)",

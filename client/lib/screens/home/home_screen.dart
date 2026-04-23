@@ -227,11 +227,13 @@ class _HomeScreenState extends State<HomeScreen> {
                                     Text(
                                       TaskService.formatDueDateWithColor(
                                         task["due_date"],
+                                        task["stage"],
                                       )["text"],
                                       style: TextStyle(
                                         color:
                                             TaskService.formatDueDateWithColor(
                                               task["due_date"],
+                                              task["stage"],
                                             )["color"],
                                         fontWeight: FontWeight.bold,
                                       ),
@@ -384,7 +386,10 @@ class _HomeScreenState extends State<HomeScreen> {
 
     return Column(
       children: tasks.map((task) {
-        final dueInfo = TaskService.formatDueDateWithColor(task["due_date"]);
+        final dueInfo = TaskService.formatDueDateWithColor(
+          task["due_date"],
+          task["stage"],
+        );
 
         return InkWell(
           onTap: () {
