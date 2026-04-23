@@ -33,6 +33,7 @@ class TaskService {
     DateTime todayDate = DateTime(now.year, now.month, now.day);
 
     for (var task in tasks) {
+      if (task["stage"] == "completed") continue;
       DateTime dueRaw = DateTime.parse(task["due_date"]);
       DateTime dueDate = DateTime(dueRaw.year, dueRaw.month, dueRaw.day);
 

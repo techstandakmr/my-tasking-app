@@ -47,6 +47,7 @@ class _HomeScreenState extends State<HomeScreen> {
     DateTime todayDate = DateTime(now.year, now.month, now.day);
 
     for (var task in allTasks) {
+      if (task["stage"] == "completed") continue;
       DateTime dueRaw = DateTime.parse(task["due_date"]);
       DateTime due = DateTime(dueRaw.year, dueRaw.month, dueRaw.day);
 
@@ -61,9 +62,6 @@ class _HomeScreenState extends State<HomeScreen> {
             break;
           case "started":
             startedTask++;
-            break;
-          case "completed":
-            completedTask++;
             break;
         }
       }
